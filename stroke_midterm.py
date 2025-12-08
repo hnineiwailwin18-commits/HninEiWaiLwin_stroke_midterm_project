@@ -19,8 +19,8 @@ heart_disease = st.selectbox("Heart Disease", ["Yes", "No"])
 ever_married = st.selectbox("Ever Married", ["Yes", "No"])
 work_type = st.selectbox("Work Type", ["Private", "Self-employed", "Govt_job", "children", "Never_worked"])
 Residence_type = st.selectbox("Residence Type", ["Urban", "Rural"])
-avg_glucose_level = st.number_input("Average Glucose Level", min_value=50.0, max_value=300.0, value=100.0)
-bmi = st.number_input("BMI", min_value=10.0, max_value=60.0, value=25.0)
+avg_glucose_level = st.slider("Average Glucose Level", min_value=50.0, max_value=300.0, value=100.0)
+bmi = st.slider("BMI", min_value=10.0, max_value=60.0, value=25.0)
 smoking_status = st.selectbox("Smoking Status", ["formerly smoked", "never smoked", "smokes", "Unknown"])
 
 columns = [
@@ -57,4 +57,5 @@ if st.button("Predict Stroke"):
         if name:
             st.success(f"{name}, you have a Low Risk of Stroke.")
         else:
+
             st.success("Low Risk of Stroke")
