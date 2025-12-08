@@ -7,7 +7,9 @@ st.title("Stroke Prediction App")
 
 with open("stroke_midterm.pkl", "rb") as file:
     model = pickle.load(file)
-
+    
+st.sidebar.markdown("**Student Name:** Hnin Ei Wai Lwin")
+st.sidebar.markdown("**Student ID:** PIUS20230022")
 
 name= st.text_input("Your Name")
 
@@ -59,3 +61,4 @@ if st.button("Predict Stroke"):
         else:
 
             st.success("Low Risk of Stroke")
+
