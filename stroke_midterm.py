@@ -7,6 +7,10 @@ st.title("Stroke Prediction App")
 
 with open("stroke_midterm.pkl", "rb") as file:
     model = pickle.load(file)
+
+logo_path = "images/parami.jpg"
+if os.path.exists(logo_path):
+    st.sidebar.image(logo_path, width=150)
     
 st.sidebar.markdown("**Student Name:** Hnin Ei Wai Lwin")
 st.sidebar.markdown("**Student ID:** PIUS20230022")
@@ -61,4 +65,5 @@ if st.button("Predict Stroke"):
         else:
 
             st.success("Low Risk of Stroke")
+
 
