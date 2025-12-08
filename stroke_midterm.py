@@ -14,21 +14,30 @@ if os.path.exists(logo_path):
     
 st.sidebar.markdown("**Student Name:** Hnin Ei Wai Lwin")
 st.sidebar.markdown("**Student ID:** PIUS20230022")
+st.sidebar.title("How to Use")
+st.sidebar.write("""
+1. Enter your personal information.
+2. Click **Predict Stroke**.
+3. View your risk level.
+""")
 
 name= st.text_input("Your Name")
 
+col1, col2 = st.columns(2)
+with col1:
+    gender = st.selectbox("Gender", ["Male", "Female"])
+    age = st.number_input("Age", min_value=1, max_value=120, value=25)
+    hypertension = st.selectbox("Hypertension", ["Yes", "No"])
+    heart_disease = st.selectbox("Heart Disease", ["Yes", "No"])
+    ever_married = st.selectbox("Ever Married", ["Yes", "No"])
 
-gender = st.selectbox("Gender", ["Male", "Female"])
-age = st.number_input("Age", min_value=1, max_value=120, value=10)
-hypertension = st.selectbox("Hypertension", ["Yes", "No"])
-heart_disease = st.selectbox("Heart Disease", ["Yes", "No"])
-ever_married = st.selectbox("Ever Married", ["Yes", "No"])
-work_type = st.selectbox("Work Type", ["Private", "Self-employed", "Govt_job", "children", "Never_worked"])
-Residence_type = st.selectbox("Residence Type", ["Urban", "Rural"])
-avg_glucose_level = st.slider("Average Glucose Level", min_value=50.0, max_value=300.0, value=100.0)
-bmi = st.slider("BMI", min_value=10.0, max_value=60.0, value=25.0)
-smoking_status = st.selectbox("Smoking Status", ["formerly smoked", "never smoked", "smokes", "Unknown"])
-
+with col2:
+    work_type = st.selectbox("Work Type", ["Private", "Self-employed", "Govt_job", "student", "Never_worked"])
+    Residence_type = st.selectbox("Residence Type", ["Urban", "Rural"])
+    avg_glucose_level = st.slider("Average Glucose Level", min_value=50.0, max_value=300.0, value=100.0)
+    bmi = st.slider("BMI", min_value=10.0, max_value=60.0, value=25.0)
+    smoking_status = st.selectbox("Smoking Status", ["formerly smoked", "never smoked", "smokes"])
+    
 columns = [
     "gender", "age", "hypertension", "heart_disease", "ever_married",
     "work_type", "Residence_type", "avg_glucose_level", "bmi", "smoking_status"
@@ -53,6 +62,8 @@ if st.button("Predict Stroke"):
     }], columns=columns)
 
     prediction = model.predict(data)
+    st.write("### Your Input:")
+    st.table(data)
 
     if prediction[0] == 1:
         if name:
@@ -65,5 +76,6 @@ if st.button("Predict Stroke"):
         else:
 
             st.success("Low Risk of Stroke")
+
 
 
