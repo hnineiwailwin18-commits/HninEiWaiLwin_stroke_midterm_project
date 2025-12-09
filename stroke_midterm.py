@@ -62,8 +62,6 @@ if st.button("Predict Stroke"):
     }], columns=columns)
 
     prediction = model.predict(data)
-    st.write("### Your Input:")
-    st.table(data)
 
     if prediction[0] == 1:
         if name:
@@ -76,6 +74,7 @@ if st.button("Predict Stroke"):
         else:
 
             st.success("Low Risk of Stroke")
+
 
 
 
